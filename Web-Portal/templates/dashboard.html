@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block nav_dash %}
+<li class="nav-item active">
+{% endblock %}
+
+{% block content %}
+<!-- sensor Data Display -->
+<div class="row">
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">speed</i>
+                        </div>
+                        <p class="card-category">Speed</p>
+                        <h3 class="card-title">25
+                            <small>cm/s</small>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">taxi_alert</i>
+                        </div>
+                        <p class="card-category">Closest Object</p>
+                        <h3 class="card-title">25
+                            <small>cm</small>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- stats Data Display -->
+        <div class="row">
+            <div class="col">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">sensors</i>
+                        </div>
+                        <p class="card-category">On The Line?</p>
+                        <h3 class="card-title">Yes
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">straighten</i>
+                        </div>
+                        <p class="card-category">Distance Travelled</p>
+                        <h3 class="card-title">300
+                            <small>cm</small>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="row">
+                <div class="card-header col-9">
+                    <h4 class="card-title card-header-warning">
+                        Maze</h4>
+                </div>
+                <div class="dropdown col-3">
+                    <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Maze 1
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="mazeoptions">
+                      <a class="dropdown-item" href="#">Maze 2</a>
+                      <a class="dropdown-item" href="#">Maze 3</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- MAZE DISPLAY HERE -->
+                <h2>HELP</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Robotic Car Controls -->
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header card-header-info">
+                <h4 class="card-title">
+                    Historical Instructions</h4>
+            </div>
+            <div class="card-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="text-warning">
+                        <th>Time</th>
+                        <th>Instruction</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>15:30</td>
+                            <td>Forward</td>
+                        </tr>
+                        <tr>
+                            <td>15:30</td>
+                            <td>Left</td>
+                        </tr>
+                        <tr>
+                            <td>15:20</td>
+                            <td>Forward</td>
+                        </tr>
+                        <tr>
+                            <td>15:20</td>
+                            <td>Back</td>
+                        </tr>
+                        <tr>
+                            <td>15:20</td>
+                            <td>Back</td>
+                        </tr>
+                        <tr>
+                            <td>15:20</td>
+                            <td>Back</td>
+                        </tr>
+                        <tr>
+                            <td>15:20</td>
+                            <td>Back</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">
+                    Controls</h4>
+            </div>
+            <div class="card-body">
+            <p><b>You have <span id="capacity"></span> block(s) left.</b></p>
+            <p>
+            <button onclick="sendBlockValues()">Run Javascript</button>
+            <button onclick="showCode()">Show Javascript</button>
+            </p>
+
+            <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+            <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+                <category name="Logic">
+                    <block type="forward"></block>
+                    <block type="Left"></block>
+                    <block type="Right"></block>
+                    <block type="controls_repeat_ext"></block>
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+
+                </category>
+            </xml>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!--Scripts for blockly-->
+<script src="./static/js/blockly_compressed.js"></script>
+<script src="./static/js/blocks_compressed.js"></script>
+<script src="./static/js/javascript_compressed.js"></script>
+<script src="./static/js/msg/js/en.js"></script>
+<script src="./static/js/blockly.js"></script>
+<script>
+    var demoWorkspace = Blockly.inject('blocklyDiv',
+    {media: '../../media/',
+    maxBlocks: 5,
+     toolbox: document.getElementById('toolbox')});
+
+    function showCode() {
+      // Generate JavaScript code and display it.
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      alert(code);
+    }
+
+    function runCode() {
+    // Generate JavaScript code and run it.
+    window.LoopTrap = 1000;
+    Blockly.JavaScript.INFINITE_LOOP_TRAP =
+      'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+    var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+    Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+    try {
+        eval(code);
+    } catch (e) {
+        alert(e);
+    }
+    }
+    function onchange(event) {
+      document.getElementById('capacity').textContent =
+          demoWorkspace.remainingCapacity();
+    }
+
+    function sendBlockValues() {
+        var code = (Blockly.JavaScript.workspaceToCode(demoWorkspace)).split(";\n");
+        code.pop();
+        alert(code);
+        console.log(code);
+
+        var data = {'instructions':code};
+        // ajax the JSON to the server
+        $.ajax({
+            url: "/dashboard",
+            data: JSON.stringify(data),
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            success: function(result) {
+                console.log(result);
+                alert('result: ' + result['processed']);
+            },
+            error: function (req, status, err){
+                 console.log('Something went wrong', status, err);
+            }
+        });
+        // stop link reloading the page
+        event.preventDefault();
+    }
+
+    demoWorkspace.addChangeListener(onchange);
+    onchange();
+</script>
+{% endblock %}

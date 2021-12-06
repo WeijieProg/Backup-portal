@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./static/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="./static/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        {% block title %}{% endblock %}
+
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="./static/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    {% block css %}{% endblock %}
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="orange" data-background-color="black">
+            <div class="logo"><a class="simple-text logo-normal" href="./dashboard">
+                    2x01
+                </a></div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    {% block nav_dash %}
+                    <li class="nav-item">
+                        {% endblock %}
+                        <a class="nav-link" href="./dashboard">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    {% block nav_maze %}
+                    <li class="nav-item ">
+                        {% endblock %}
+                        <a class="nav-link" href="/MazeCreator">
+                            <i class="material-icons">drive_file_rename_outline</i>
+                            <p>Maze Creator</p>
+                        </a>
+                    </li>
+                    {% block nav_scoreboard %}
+                    <li class="nav-item ">
+                        {% endblock %}
+                        <a class="nav-link" href="/scoreboard">
+                            <i class="material-icons">leaderboard</i>
+                            <p>Scoreboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/connection">
+                            <i class="material-icons">cancel</i>
+                            <p>End Session</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <!-- <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="javascript:;">{{ self.title() }}
+                        </a>
+                    </div>
+            </nav> -->
+            <!-- End Navbar -->
+            <div class="container-fluid">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="./static/js/core/jquery.min.js"></script>
+<script src="./static/js/core/popper.min.js"></script>
+<script src="./static/js/core/bootstrap-material-design.min.js"></script>
+<script src="./static/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!-- Plugin for the momentJs  -->
+<script src="./static/js/plugins/moment.min.js"></script>
+<!--  Plugin for Sweet Alert -->
+<script src="./static/js/plugins/sweetalert2.js"></script>
+<!-- Forms Validations Plugin -->
+<script src="./static/js/plugins/jquery.validate.min.js"></script>
+<!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+<script src="./static/js/plugins/jquery.bootstrap-wizard.js"></script>
+<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="./static/js/plugins/bootstrap-selectpicker.js"></script>
+<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script src="./static/js/plugins/bootstrap-datetimepicker.min.js"></script>
+<!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+<script src="./static/js/plugins/jquery.dataTables.min.js"></script>
+<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+<script src="./static/js/plugins/bootstrap-tagsinput.js"></script>
+<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="./static/js/plugins/jasny-bootstrap.min.js"></script>
+<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+<script src="./static/js/plugins/fullcalendar.min.js"></script>
+<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+<script src="./static/js/plugins/jquery-jvectormap.js"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="./static/js/plugins/nouislider.min.js"></script>
+<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<!-- Library for adding dinamically elements -->
+<script src="./static/js/plugins/arrive.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chartist JS -->
+<script src="./static/js/plugins/chartist.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="./static/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="./static/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        md.initDashboardPageCharts();
+
+    });
+</script>
+{% endblock %}
+
+</html>

@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}
+Scoreboard
+{% endblock %}
+
+{% block nav_scoreboard %}
+<li class="nav-item active">
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="./static/css/scoreboard.css">
+{% endblock %}
+
+{% block content %}
+
+<body>
+<div class="wrapper">
+	<div class="scoreboard_title_wrap">
+		<div class="scoreboard_title">
+			<ul>
+				<li>SCOREBOARD</li>
+			</ul>
+		</div>
+		<div class="scoreboard_section">
+			<div class="scoreboard_tabs">
+				<div class="tabs">
+					<ul>
+						<li class="active" data-li="maze_1">Maze 1</li>
+						<li data-li="maze_2">Maze 2</li>
+						<li data-li="maze_3">Maze 3</li>
+					</ul>
+				</div>
+			</div>
+			<div class="scoreboard_wrap">
+				<div class="scoreboard_item maze_1" style="display: block;">
+					<div class="table">
+						<table style="width:100%">
+							<tr>
+								<th>RANK</th>
+								<th>NAME</th>
+								<th>DATE</th>
+								<th>SCORE</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>{{scoreboard_py[0].rank1name}}</td>
+								<td>{{scoreboard_py[0].rank1date}}</td>
+								<td>{{scoreboard_py[0].rank1score}}</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>{{scoreboard_py[0].rank2name}}</td>
+								<td>{{scoreboard_py[0].rank2date}}</td>
+								<td>{{scoreboard_py[0].rank2score}}</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>{{scoreboard_py[0].rank3name}}</td>
+								<td>{{scoreboard_py[0].rank3date}}</td>
+								<td>{{scoreboard_py[0].rank3score}}</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>{{scoreboard_py[0].rank4name}}</td>
+								<td>{{scoreboard_py[0].rank4date}}</td>
+								<td>{{scoreboard_py[0].rank4score}}</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>{{scoreboard_py[0].rank5name}}</td>
+								<td>{{scoreboard_py[0].rank5date}}</td>
+								<td>{{scoreboard_py[0].rank5score}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="scoreboard_item maze_2" style="display: none;">
+					<div class="table">
+						<table style="width:100%">
+							<tr>
+								<th>RANK</th>
+								<th>NAME</th>
+								<th>DATE</th>
+								<th>SCORE</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>{{scoreboard_py[1].rank1name}}</td>
+								<td>{{scoreboard_py[1].rank1date}}</td>
+								<td>{{scoreboard_py[1].rank1score}}</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>{{scoreboard_py[1].rank2name}}</td>
+								<td>{{scoreboard_py[1].rank2date}}</td>
+								<td>{{scoreboard_py[1].rank2score}}</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>{{scoreboard_py[1].rank3name}}</td>
+								<td>{{scoreboard_py[1].rank3date}}</td>
+								<td>{{scoreboard_py[1].rank3score}}</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>{{scoreboard_py[1].rank4name}}</td>
+								<td>{{scoreboard_py[1].rank4date}}</td>
+								<td>{{scoreboard_py[1].rank4score}}</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>{{scoreboard_py[1].rank5name}}</td>
+								<td>{{scoreboard_py[1].rank5date}}</td>
+								<td>{{scoreboard_py[1].rank5score}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="scoreboard_item maze_3" style="display: none;">
+					<div class="table">
+						<table style="width:100%">
+							<tr>
+								<th>RANK</th>
+								<th>NAME</th>
+								<th>DATE</th>
+								<th>SCORE</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>{{scoreboard_py[2].rank1name}}</td>
+								<td>{{scoreboard_py[2].rank1date}}</td>
+								<td>{{scoreboard_py[2].rank1score}}</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>{{scoreboard_py[2].rank2name}}</td>
+								<td>{{scoreboard_py[2].rank2date}}</td>
+								<td>{{scoreboard_py[2].rank2score}}</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>{{scoreboard_py[2].rank3name}}</td>
+								<td>{{scoreboard_py[2].rank3date}}</td>
+								<td>{{scoreboard_py[2].rank3score}}</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>{{scoreboard_py[2].rank4name}}</td>
+								<td>{{scoreboard_py[2].rank4date}}</td>
+								<td>{{scoreboard_py[2].rank4score}}</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>{{scoreboard_py[2].rank5name}}</td>
+								<td>{{scoreboard_py[2].rank5date}}</td>
+								<td>{{scoreboard_py[2].rank5score}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+{% endblock %}
+
+{% block scripts %}
+<script src="./static/js/scoreboard.js"></script>
+{% endblock %}
